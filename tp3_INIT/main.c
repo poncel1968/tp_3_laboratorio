@@ -71,6 +71,7 @@ int main()
 
 
 
+
             case 6:
 
                 ll_sort2(listaEmpleados,employee_criterioSortNombre,1);
