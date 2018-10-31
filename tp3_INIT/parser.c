@@ -77,7 +77,7 @@ int parser_EmployeeFromBinary(FILE* pFile , LinkedList* pArrayListEmployee)
         {
             pEmpleado= employee_new();
             fread(pEmpleado,sizeof(Employee),1,pFile);
-
+            printf("%s",pEmpleado->nombre);
             ll_add(pArrayListEmployee,pEmpleado);
 
         }
