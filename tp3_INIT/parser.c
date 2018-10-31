@@ -67,11 +67,15 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
 int parser_EmployeeFromBinary(FILE* pFile , LinkedList* pArrayListEmployee)
 {
     int retorno =-1;
-    Employee * pEmpleado;
+    Employee pEmpleado;
+
 
     if(pFile != NULL)
     {
-
+        while (!feof(pFile))
+        {
+            fread()
+        }
 
     }
     return retorno;
