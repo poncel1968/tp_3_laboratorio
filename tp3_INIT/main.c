@@ -17,13 +17,14 @@
      9. Guardar los datos de los empleados en el archivo data.csv (modo binario).
     10. Salir
 *****************************************************/
+
 int ll_sort2(LinkedList* this, int (*pFunc)(void* ,void*), int order)
 {
     int returnAux =-1;
     void* auxiliar;
     int i;
     int flagSwap;
-    long contadorSeguridad = ll_len(this);
+    int contadorSeguridad = ll_len(this);
 
     if(this!=NULL && (order==0 || order==1) && pFunc!=NULL && ll_len(this)>0)
     {
@@ -45,12 +46,11 @@ int ll_sort2(LinkedList* this, int (*pFunc)(void* ,void*), int order)
                     }
                 }
             }
-           // contadorSeguridad--;
-           //printf("\n%d",contadorSeguridad);
+            contadorSeguridad--;
+           printf("\n%d",contadorSeguridad);
         }while(flagSwap && contadorSeguridad);
     }
     return returnAux;
-
 }
 
 int main()
@@ -67,11 +67,15 @@ int main()
                 printf("\nSize de la lista %d",ll_len(listaEmpleados));
                 option = 6;
                 break;
+            case 3:
+
+
+
             case 6:
 
                 ll_sort2(listaEmpleados,employee_criterioSortNombre,1);
-
                 controller_ListEmployee(listaEmpleados);
+                controller_saveAsBinary("data.csv",listaEmpleados);
                 option = 10;
                 break;
         }

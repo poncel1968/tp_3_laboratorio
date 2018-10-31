@@ -121,3 +121,45 @@
 	"LinkedList.h"
 	"Employee.h"
 
+1540942704 source:/home/alumno/Descargas/tp_3_laboratorio/tp3_INIT/Controller.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+	"parser.h"
+
+1533133022 /home/alumno/Descargas/tp_3_laboratorio/tp3_INIT/LinkedList.h
+
+1540516223 /home/alumno/Descargas/tp_3_laboratorio/tp3_INIT/Employee.h
+
+1533133022 /home/alumno/Descargas/tp_3_laboratorio/tp3_INIT/parser.h
+
+1540838095 source:/home/alumno/Descargas/tp_3_laboratorio/tp3_INIT/Employee.c
+	"Employee.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1540945408 source:/home/alumno/Descargas/tp_3_laboratorio/tp3_INIT/main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+
+1533133022 /home/alumno/Descargas/tp_3_laboratorio/tp3_INIT/Controller.h
+
+1540821453 source:/home/alumno/Descargas/tp_3_laboratorio/tp3_INIT/parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1540943779 source:/home/alumno/Descargas/tp_3_laboratorio/tp3_INIT/utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
+1540943819 /home/alumno/Descargas/tp_3_laboratorio/tp3_INIT/utn.h
+

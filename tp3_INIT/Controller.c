@@ -3,6 +3,7 @@
 #include "LinkedList.h"
 #include "Employee.h"
 #include "parser.h"
+#include "utn.h"
 
 
 /** \brief Carga los datos de los empleados desde el archivo data.csv (modo texto).
@@ -31,7 +32,13 @@ int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
  */
 int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
 {
-    return 1;
+    int retorno = -1;
+    FILE* pArchivo;
+    pArchivo = fopen(path , "rb");
+    retorno = parser_EmployeeFromBinary(pArchivo,pArrayListEmployee);
+    fclose(pArchivo);
+    return retorno;
+
 }
 
 /** \brief Alta de empleados
@@ -41,8 +48,27 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
  * \return int
  *
  */
+
 int controller_addEmployee(LinkedList* pArrayListEmployee)
 {
+    /*
+    char bufferInt[1024];
+    char bufferNombre[1024];
+    char bufferHorasTrabajadas[1024];
+    char bufferSueldo[1024];
+
+    int retorno = -1;
+
+    Employee * pEmpleado;
+
+    if (utn_getString(bufferNombre, 1024,"Ingrese Nombre : ","Error en nombre") &&
+        utn_getInt(bufferHorasTrabajadas,1024,"Ingrese horas trabajadas : ","Error horas trabajadas") &&
+        utn_getInt(bufferSuedo,10, "Ingresar Sueldo:", "error Sueldo"))
+    {
+        pEmpleado = employee_newConParametros(  bufferInt,bufferNombre,bufferHorasTrabajadas,bufferSueldo);
+    }
+
+*/
     return 1;
 }
 
@@ -130,6 +156,29 @@ int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
  */
 int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
 {
+    FILE *pArchivo= fopen(path,"wb");
+    Employee* pEmpleado;
+    int i;
+///    char nombre[100];
+
+    if  (pArchivo != NULL)
+    {
+        for(i=0;i<ll_len(pArrayListEmployee);i++)
+        {
+            pEmpleado = ll_get(pArrayListEmployee,i);
+            ///employee_getNombre(pEmpleado,nombre);
+            ///printf("\n%s",nombre);
+            fwrite(pEmpleado,sizeof(Employee),1,pArchivo);///para binarios se usa fwrite
+        }
+    }
+    fclose(pArchivo);
+
     return 1;
 }
+
+
+
+
+
+
 
