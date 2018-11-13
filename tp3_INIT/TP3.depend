@@ -53,114 +53,50 @@
 	"LinkedList.h"
 	"Employee.h"
 
-1540515578 source:/home/profesor/Descargas/CASCARA_TP3/TP3/Linux_64/Controller.c
-	<stdio.h>
-	<stdlib.h>
-	"LinkedList.h"
-	"Employee.h"
-	"parser.h"
-
-1533133022 /home/profesor/Descargas/CASCARA_TP3/TP3/Linux_64/LinkedList.h
-
-1540516223 /home/profesor/Descargas/CASCARA_TP3/TP3/Linux_64/Employee.h
-
-1540516429 source:/home/profesor/Descargas/CASCARA_TP3/TP3/Linux_64/main.c
-	<stdio.h>
-	<stdlib.h>
-	"LinkedList.h"
-	"Controller.h"
-	"Employee.h"
-
-1533133022 /home/profesor/Descargas/CASCARA_TP3/TP3/Linux_64/Controller.h
-
-1540510114 source:/home/profesor/Descargas/CASCARA_TP3/TP3/Linux_64/parser.c
-	<stdio.h>
-	<stdlib.h>
-	"LinkedList.h"
-	"Employee.h"
-
-1540516378 source:/home/profesor/Descargas/CASCARA_TP3/TP3/Linux_64/Employee.c
-	"Employee.h"
+1542150015 source:/home/alumno/Descargas/TP3/Linux_64/Controller.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
-
-1533133022 /home/profesor/Descargas/CASCARA_TP3/TP3/Linux_64/parser.h
-
-1540515578 source:/home/mauro/Descargas/TP3_CONTROLAR/Controller.c
-	<stdio.h>
-	<stdlib.h>
-	"LinkedList.h"
-	"Employee.h"
-	"parser.h"
-
-1533133022 /home/mauro/Descargas/TP3_CONTROLAR/LinkedList.h
-
-1540516223 /home/mauro/Descargas/TP3_CONTROLAR/Employee.h
-
-1533133022 /home/mauro/Descargas/TP3_CONTROLAR/parser.h
-
-1540838095 source:/home/mauro/Descargas/TP3_CONTROLAR/Employee.c
-	"Employee.h"
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-
-1540838041 source:/home/mauro/Descargas/TP3_CONTROLAR/main.c
-	<stdio.h>
-	<stdlib.h>
-	"LinkedList.h"
-	"Controller.h"
-	"Employee.h"
-
-1533133022 /home/mauro/Descargas/TP3_CONTROLAR/Controller.h
-
-1540821453 source:/home/mauro/Descargas/TP3_CONTROLAR/parser.c
-	<stdio.h>
-	<stdlib.h>
-	"LinkedList.h"
-	"Employee.h"
-
-1540946776 source:/home/alumno/Descargas/tp_3_laboratorio/tp3_INIT/Controller.c
-	<stdio.h>
-	<stdlib.h>
 	"LinkedList.h"
 	"Employee.h"
 	"parser.h"
 	"utn.h"
 
-1533133022 /home/alumno/Descargas/tp_3_laboratorio/tp3_INIT/LinkedList.h
+1542148796 /home/alumno/Descargas/TP3/Linux_64/LinkedList.h
 
-1540516223 /home/alumno/Descargas/tp_3_laboratorio/tp3_INIT/Employee.h
+1542148796 /home/alumno/Descargas/TP3/Linux_64/Employee.h
 
-1533133022 /home/alumno/Descargas/tp_3_laboratorio/tp3_INIT/parser.h
+1542148796 /home/alumno/Descargas/TP3/Linux_64/parser.h
 
-1540838095 source:/home/alumno/Descargas/tp_3_laboratorio/tp3_INIT/Employee.c
+1542148796 /home/alumno/Descargas/TP3/Linux_64/utn.h
+
+1542148796 source:/home/alumno/Descargas/TP3/Linux_64/Employee.c
 	"Employee.h"
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 
-1540948171 source:/home/alumno/Descargas/tp_3_laboratorio/tp3_INIT/main.c
+1542148796 source:/home/alumno/Descargas/TP3/Linux_64/main.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
 	"Controller.h"
 	"Employee.h"
+	"utn.h"
 
-1533133022 /home/alumno/Descargas/tp_3_laboratorio/tp3_INIT/Controller.h
+1542148796 /home/alumno/Descargas/TP3/Linux_64/Controller.h
 
-1540948551 source:/home/alumno/Descargas/tp_3_laboratorio/tp3_INIT/parser.c
-	<stdio.h>
+1542150123 source:/home/alumno/Descargas/TP3/Linux_64/parser.c
+	<stdio_ext.h>
 	<stdlib.h>
+	<string.h>
+	<stdio.h>
 	"LinkedList.h"
 	"Employee.h"
 
-1540943779 source:/home/alumno/Descargas/tp_3_laboratorio/tp3_INIT/utn.c
+1542148796 source:/home/alumno/Descargas/TP3/Linux_64/utn.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"utn.h"
-
-1540943819 /home/alumno/Descargas/tp_3_laboratorio/tp3_INIT/utn.h
 

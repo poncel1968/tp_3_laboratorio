@@ -1,7 +1,12 @@
-#include <stdio.h>
+#include <stdio_ext.h>
 #include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
 #include "LinkedList.h"
 #include "Employee.h"
+
+
+
 
 /** \brief Parsea los datos los datos de los empleados desde el archivo data.csv (modo texto).
  *
@@ -16,44 +21,33 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
     char bufferNombre[1024];
     char bufferHorasTrabajadas[1024];
     char bufferSueldo[1024];
-    int retorno = -1;
+    int retorno=-1;
     int flagOnce=1;
     Employee * pEmpleado;
 
-
-    if(pFile != NULL)
+    if(pFile!=NULL)
     {
         while(!feof(pFile))
         {
-            if(flagOnce)
+            if( flagOnce)
             {
-                flagOnce = 0;
-                fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",
-                                        bufferInt,
-                                        bufferNombre,
-                                        bufferHorasTrabajadas,
-                                        bufferSueldo);
+                flagOnce=0;
+                fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",bufferInt,bufferNombre,bufferHorasTrabajadas,bufferSueldo);
             }
-            fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",
-                                        bufferInt,
-                                        bufferNombre,
-                                        bufferHorasTrabajadas,
-                                        bufferSueldo);
-            //printf("\n%s",bufferNombre);
+            fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",bufferInt,bufferNombre,bufferHorasTrabajadas,bufferSueldo);
+            ///printf("%s,%s,%s,%s\n",bufferInt,bufferNombre,bufferHorasTrabajadas,bufferSueldo);
 
-            pEmpleado = employee_newConParametros(  bufferInt,
-                                                    bufferNombre,
-                                                    bufferHorasTrabajadas,
-                                                    bufferSueldo);
+        pEmpleado = Employee_newConParametros(bufferInt,bufferNombre,bufferHorasTrabajadas,bufferSueldo);
 
-            if(pEmpleado != NULL)
-            {
-                retorno = 0;
-                ll_add(pArrayListEmployee,pEmpleado);
-            }
-
+        if(pEmpleado!=NULL)
+        {
+            retorno=0;
+            ll_add(pArrayListEmployee,pEmpleado);
         }
+        }
+
     }
+
     return retorno;
 }
 
@@ -66,21 +60,40 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee)
  */
 int parser_EmployeeFromBinary(FILE* pFile , LinkedList* pArrayListEmployee)
 {
-    int retorno =-1;
-    Employee* pEmpleado;
+    int retorno=-1;
+    int id;
+    char idStr[10];
+    char nombre[128];
+    int horasTrabajadas;
+    char horasTrabStr[64];
+    int sueldo;
+    char sueldoStr[64];
+    int datosLeidos=0;
+    Employee* pEmpleado=NULL;
 
 
-    if(pFile != NULL)
+    if(pFile!=NULL && pArrayListEmployee !=NULL)
     {
-        retorno=0;
-        while (!feof(pFile))
+        rewind(pFile);
+        while(!feof(pFile))
         {
-            pEmpleado= employee_new();
-            fread(pEmpleado,sizeof(Employee),1,pFile);
-            printf("%s",pEmpleado->nombre);
-            ll_add(pArrayListEmployee,pEmpleado);
-        }
+            datosLeidos =  fread(&id,sizeof(int),1,pFile);
+            datosLeidos =(fread(nombre,sizeof(char),128,pFile))+datosLeidos;
+            datosLeidos =(fread(&sueldo,sizeof(int),1,pFile))+datosLeidos;
+            datosLeidos=(fread(&horasTrabajadas,sizeof(int),1,pFile))+datosLeidos;
+            sprintf(idStr,"%d",id);
+            sprintf(horasTrabStr,"%d",horasTrabajadas);
+            sprintf(sueldoStr,"%d",sueldo);
 
+            if(datosLeidos==131)
+            {
+                pEmpleado = Employee_newConParametros(idStr,nombre,horasTrabStr,sueldoStr);
+                ll_add(pArrayListEmployee,pEmpleado);
+            }
+
+        }
+        printf("\n\n***Registros de archivo binario leidos correctamente***\n\n");
+        retorno =0;
     }
     return retorno;
 }

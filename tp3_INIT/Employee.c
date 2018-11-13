@@ -1,50 +1,55 @@
-
 #include "Employee.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-Employee* employee_new()
+
+int getNextId(int idAnterior, int* pId)
+{
+    if (idAnterior>=0 && pId != NULL)
+    {
+        *pId=idAnterior+1;
+        return 0;
+    }
+    return -1;
+}
+
+Employee* Employee_new()
 {
     Employee* this;
     this=malloc(sizeof(Employee));
     return this;
 }
 
-void employee_delete(Employee* this)
+void Employee_delete(Employee* this)
 {
+
+
     free(this);
 }
 
-Employee* employee_newConParametros(char* idStr,char* nombre,char* horasTrabajadasStr,char* sueldoStr)
+Employee* Employee_newConParametros(char* idStr,char* nombre,char* horasTrabajadasStr,char* sueldoStr)
 {
     Employee* this;
-    this=employee_new();
+    this=Employee_new();
 
-    //FALTA VALIDAR
-    int id = atoi(idStr);
-    int horasTrabajadas = atoi(horasTrabajadasStr);
-    int sueldo = atoi(sueldoStr);
-    //FALTA VALIDAR
 
-    if(
-    !employee_setId(this,id)&&
-    !employee_setNombre(this,nombre)&&
-    !employee_setHorasTrabajadas(this,horasTrabajadas) &&
-    !employee_setSueldo(this,sueldo)
-    )
+    if(!Employee_setId(this,atoi(idStr))&& !Employee_setNombre(this,nombre)&& !Employee_setHorasTrabajadas(this,atoi(horasTrabajadasStr))&&
+    !Employee_setSueldo(this,atoi(sueldoStr)))
     {
          return this;
     }
 
-    employee_delete(this);
+
+    Employee_delete(this);
     return NULL;
 }
 
-int employee_setId(Employee* this,int id)
+
+int Employee_setId(Employee* this,int id)
 {
     int retorno=-1;
-    static int proximoId=-1;
+    int proximoId=-1;
 
     if(this!=NULL && id==-1)
     {
@@ -61,7 +66,7 @@ int employee_setId(Employee* this,int id)
     return retorno;
 }
 
-int employee_getId(Employee* this,int* id)
+int Employee_getId(Employee* this,int* id)
 {
     int retorno=-1;
     if(this!=NULL)
@@ -72,7 +77,7 @@ int employee_getId(Employee* this,int* id)
     return retorno;
 }
 
-int employee_setNombre(Employee* this,char* nombre)
+int Employee_setNombre(Employee* this,char* nombre)
 {
     int retorno=-1;
     if(this!=NULL && nombre!=NULL)
@@ -83,7 +88,7 @@ int employee_setNombre(Employee* this,char* nombre)
     return retorno;
 }
 
-int employee_getNombre(Employee* this,char* nombre)
+int Employee_getNombre(Employee* this,char* nombre)
 {
     int retorno=-1;
     if(this!=NULL && nombre!=NULL)
@@ -94,7 +99,7 @@ int employee_getNombre(Employee* this,char* nombre)
     return retorno;
 }
 
-int employee_setHorasTrabajadas(Employee* this,int horasTrabajadas)
+int Employee_setHorasTrabajadas(Employee* this,int horasTrabajadas)
 {
     int retorno=-1;
     if(this!=NULL)
@@ -105,7 +110,7 @@ int employee_setHorasTrabajadas(Employee* this,int horasTrabajadas)
     return retorno;
 }
 
-int employee_getHorasTrabajadas(Employee* this,int* horasTrabajadas)
+int Employee_getHorasTrabajadas(Employee* this,int* horasTrabajadas)
 {
     int retorno=-1;
     if(this!=NULL)
@@ -116,7 +121,7 @@ int employee_getHorasTrabajadas(Employee* this,int* horasTrabajadas)
     return retorno;
 }
 
-int employee_setSueldo(Employee* this,int sueldo)
+int Employee_setSueldo(Employee* this,int sueldo)
 {
     int retorno=-1;
     if(this!=NULL)
@@ -127,7 +132,7 @@ int employee_setSueldo(Employee* this,int sueldo)
     return retorno;
 }
 
-int employee_getSueldo(Employee* this,int* sueldo)
+int Employee_getSueldo(Employee* this,int* sueldo)
 {
     int retorno=-1;
     if(this!=NULL)
@@ -138,30 +143,32 @@ int employee_getSueldo(Employee* this,int* sueldo)
     return retorno;
 }
 
-int employee_criterioSortNombre(void* thisA,void* thisB)
+int Employee_criterio(void* this, void* other)
 {
-    char nombreA[100];
-    char nombreB[100];
-    int retorno = 0;
+    int sueldo1;
+    int sueldo2;
+    int criterio;
+    int retorno;
+    Employee* empleado1 = this;
+    Employee* empleado2 = other;
 
-
-
-    employee_getNombre(thisA,nombreA);
-    employee_getNombre(thisB,nombreB);
-
-
-    if(strcmp(nombreA,nombreB) > 0)
+    Employee_getSueldo(empleado1, &sueldo1);
+    Employee_getSueldo(empleado2, &sueldo2);
+    criterio =sueldo1-sueldo2;
+    if(criterio<0)
     {
-       // printf("\nMAYOR");
-        retorno = 1;
+        retorno=-1;
     }
-    else if(strcmp(nombreA,nombreB) < 0)
+    else if (criterio<0)
     {
-       // printf("\nMENOR");
-        retorno = -1;
+        retorno=1;
+    }
+    else
+    {
+        retorno=0;
     }
 
     return retorno;
-}
 
+}
 

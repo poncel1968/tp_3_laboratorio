@@ -3,6 +3,7 @@
 #include "LinkedList.h"
 #include "Controller.h"
 #include "Employee.h"
+#include "utn.h"
 
 /****************************************************
     Menu:
@@ -18,68 +19,78 @@
     10. Salir
 *****************************************************/
 
-int ll_sort2(LinkedList* this, int (*pFunc)(void* ,void*), int order)
-{
-    int returnAux =-1;
-    void* auxiliar;
-    int i;
-    int flagSwap;
-    int contadorSeguridad = ll_len(this);
-
-    if(this!=NULL && (order==0 || order==1) && pFunc!=NULL && ll_len(this)>0)
-    {
-        returnAux=0;
-        do
-        {
-            flagSwap=0;
-            for(i=0;i<(ll_len(this)-1);i++)
-            {
-
-                if(ll_get(this,i)!=NULL && ll_get(this,i+1)!=NULL)
-                {
-                    if(pFunc(ll_get(this,i),ll_get(this,i+1))==-1)
-                    {
-                        auxiliar=ll_get(this,i);
-                        ll_set(this,i,ll_get(this,i+1));
-                        ll_set(this,i+1,auxiliar);
-                        flagSwap=1;
-                    }
-                }
-            }
-            contadorSeguridad--;
-           printf("\n%d",contadorSeguridad);
-        }while(flagSwap && contadorSeguridad);
-    }
-    return returnAux;
-}
 
 int main()
 {
-    int option = 1;
+    int option = 0;
+
     LinkedList* listaEmpleados = ll_newLinkedList();
+
     do{
+        printf("\n****************************************************\nMenu:\n1. Cargar los datos de los empleados desde el archivo data.csv (modo texto).\n");
+        printf("2. Cargar los datos de los empleados desde el archivo data.csv (modo binario)\n ");
+        printf("3. Alta de empleado\n4. Modificar datos de empleado\n5. Baja de empleado\n6. Listar empleados\n");
+        printf("7. Ordenar empleados\n8. Guardar los datos de los empleados en el archivo data.csv (modo texto).\n");
+        printf("9. Guardar los datos de los empleados en el archivo data.csv (modo binario).\n10. Salir\n");
+        printf(" *****************************************************\n");
+        utn_getInt(&option,5,"\nIngrese numero de opcion ","\nValor ingresado invalido \n");
+
         switch(option)
         {
             case 1:
-
-                printf("\nSize de la lista %d",ll_len(listaEmpleados));
-                controller_loadFromText("data.csv",listaEmpleados);
-                printf("\nSize de la lista %d",ll_len(listaEmpleados));
-                option = 6;
+                if (controller_loadFromText("data.csv",listaEmpleados)== 0)
+                {
+                        printf("Archivo texto subido con exito \n");
+                }
+                break;
+            case 2:
+                if (controller_loadFromBinary("dataB" , listaEmpleados)==0)
+                {
+                    printf("\nArchivo binario leido correctamente\n");
+                }
                 break;
             case 3:
-
-
-
-
-            case 6:
-
-                ll_sort2(listaEmpleados,employee_criterioSortNombre,1);
-                controller_ListEmployee(listaEmpleados);
-                controller_saveAsBinary("data.csv",listaEmpleados);
-                option = 10;
+                if(controller_addEmployee(listaEmpleados)==0)
+                {
+                    printf("\nEmpleado dado de alta con exito \n");
+                }
                 break;
+            case 4:
+                controller_editEmployee(listaEmpleados);
+                break;
+            case 5:
+                if(controller_removeEmployee(listaEmpleados)==0)
+                {
+                    printf("\nBaja exitosa\n");
+                }
+                break;
+            case 6:
+                if(controller_ListEmployee(listaEmpleados)==0)
+                {
+                    printf("\n Datos listados con exito\n");
+                }
+                break;
+            case 7:
+                if(controller_sortEmployee(listaEmpleados)== 0)
+                {
+                    printf("\n Registros ordenados\n");
+                }
+                break;
+            case 8:
+                if (controller_saveAsText("data.csv" , listaEmpleados)==0)
+                {
+                    printf("\nArchivo salvado con exito\n");
+                }
+                break;
+            case 9:
+                if (controller_saveAsBinary("dataB" ,listaEmpleados)==0)
+                {
+                    printf("\nArchivo binario salvado con exito\n ");
+                }
+                break;
+
         }
     }while(option != 10);
+
     return 0;
 }

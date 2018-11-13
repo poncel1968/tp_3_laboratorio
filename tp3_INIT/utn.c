@@ -14,8 +14,9 @@
 int utn_getString(char* arrayString, int limite,char* msg,char* msgError)
 {
     int retorno=-1;
-    printf(msg);
     char auxString[limite];
+
+    printf(msg);
     fgets(auxString,limite,stdin);
     fflush(stdin);
 
@@ -63,7 +64,7 @@ int validarIntInStr(char* stringInt, int limitedigit )
 /*
 @brief : obtiene un entero a partir de un string
 @param : puntero a entero
-@param : limite de dÃ­gitos
+@param : limite de dígitos
 @value : 0 = successful
 */
 int utn_getInt(int* valor,int limitedigit, char* msg, char* msgError)
@@ -82,7 +83,6 @@ int utn_getInt(int* valor,int limitedigit, char* msg, char* msgError)
     }
     else
     {
-
         retorno=-1;
     }
     return retorno;
@@ -113,6 +113,7 @@ int validarStrTelefono(char* string, int limite)
 @brief : valida si hay un nombre del tipo nombre (valida solo caracteres alfanumericos)
 @param : string donde esta el numero a validar
 @param : limite string
+
 */
 int validarNombreInStr(char* string)
 {
@@ -195,16 +196,16 @@ int validarFloatInStr(char* stringFloat, int limitedigit )
 /*
 @brief : obtiene un numero flotatan a partir de un string
 @param : puntero a flotante
-@param : limite de dÃ­gitos
+@param : limite de dígitos
 @value : 0 = successful
 */
-int utn_getFloat(float* valor,int limitedigit)
+int utn_getFloat(float* valor,int limitedigit,char* msg, char* msgError)
 {
     int retorno;
     char auxString[limitedigit];
     float aux;
     int valorGetString;
-    valorGetString=utn_getString(auxString,limitedigit,"Ingrese un numero","Error");
+    valorGetString=utn_getString(auxString,limitedigit,msg,msgError);
 
     if (validarFloatInStr(auxString,limitedigit)&& !valorGetString)
     {
@@ -219,4 +220,7 @@ int utn_getFloat(float* valor,int limitedigit)
     }
     return retorno;
 }
+
+
+
 
