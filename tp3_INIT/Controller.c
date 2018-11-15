@@ -341,14 +341,13 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
     return retorno;
 }
 
-int controller_filter(LinkedList* this, LinkedList* filteredList)
+LinkedList* controller_filter(LinkedList* this)
 {
-    int retorno=-1;
+    LinkedList* retorno=NULL;
 
-    if (this != NULL && filteredList !=NULL)
+    if (this != NULL )
     {
-        filteredList= ll_filter(this, Employee_criterioFiltro);
-        retorno=0;
+        retorno = ll_filter(this, Employee_criterioFiltro);
     }
 
         return retorno;

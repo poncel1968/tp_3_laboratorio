@@ -34,7 +34,8 @@ int main()
         printf("3. Alta de empleado\n4. Modificar datos de empleado\n5. Baja de empleado\n6. Listar empleados\n");
         printf("7. Ordenar empleados\n8. Guardar los datos de los empleados en el archivo data.csv (modo texto).\n");
         printf("9. Guardar los datos de los empleados en el archivo data.csv (modo binario).\n");
-        printf("10.Nueva lista Filtrada por sueldos menores a 10000\n11.Imprimir lista empleados\n99. Salir\n ");
+        printf("10.Nueva lista Filtrada por sueldos menores a 17000\n11.Imprimir lista empleados\n");
+        printf("12.Listados de empleados aplicaron filtro\n99. Salir\n ");
         printf(" *****************************************************\n");
         utn_getInt(&option,5,"\nIngrese numero de opcion ","\nValor ingresado invalido \n");
 
@@ -92,19 +93,26 @@ int main()
                 }
                 break;
             case 10:
-                if (controller_filter(listaEmpleados, listaEmpleadosFiltrados)==0)
+                listaEmpleadosFiltrados=controller_filter(listaEmpleados);
+                if (listaEmpleadosFiltrados!=NULL)
                 {
-                    printf("Empleados filtrados correctamente");
                     controller_showList(listaEmpleadosFiltrados);
                 }
                 break;
             case 11:
-                if (controller_showList(listaEmpleados)==0)
+
+                if (controller_showList(listaEmpleados)== 0)
                 {
                     printf("***Fin de la lista***");
                 }
                 break;
-
+            case 12:
+                if (controller_showList(listaEmpleadosFiltrados)==0)
+                {
+                    printf(" \n***Fin lista empleados aplicaron filtro");
+                    printf("Tamaño lista empleados filtrados %d",ll_len(listaEmpleadosFiltrados));
+                }
+                break;
         }
     }while(option != 99);
 

@@ -204,7 +204,7 @@ int Employee_criterioFiltro(void* this)
     if (this != NULL )
     {
         Employee_getSueldo(pEmpleado,&sueldo);
-        if (sueldo <10000)
+        if (sueldo <17000)
         {
             retorno = 0;
         }
