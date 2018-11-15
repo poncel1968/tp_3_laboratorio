@@ -1,8 +1,8 @@
-#include "Employee.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include "Employee.h"
+#include "ll.h"
 
 int getNextId(int idAnterior, int* pId)
 {
@@ -170,5 +170,47 @@ int Employee_criterio(void* this, void* other)
 
     return retorno;
 
+}
+
+int Employee_show(void* this)
+{
+    Employee* pEmpleado;
+    pEmpleado=this;
+    int retorno=-1;
+    char nombre[128];
+    int sueldo=0;
+
+    if (pEmpleado != NULL)
+    {
+        printf("Datos del empleado ***\n");
+        Employee_getNombre(this,nombre);
+        printf("Nombre: %s \n",nombre);
+        Employee_getSueldo(this,&sueldo);
+        printf("Sueldo : %d \n",sueldo );
+        retorno=0;
+    }
+
+    return retorno;
+}
+
+int Employee_criterioFiltro(void* this)
+{
+    int retorno=-1;
+    int sueldo=0;
+    Employee* pEmpleado;
+    pEmpleado=this;
+
+
+    if (this != NULL )
+    {
+        Employee_getSueldo(pEmpleado,&sueldo);
+        if (sueldo <10000)
+        {
+            retorno = 0;
+        }
+
+    }
+
+    return retorno;
 }
 

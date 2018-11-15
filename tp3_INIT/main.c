@@ -4,6 +4,7 @@
 #include "Controller.h"
 #include "Employee.h"
 #include "utn.h"
+#include "ll.h"
 
 /****************************************************
     Menu:
@@ -16,7 +17,7 @@
      7. Ordenar empleados
      8. Guardar los datos de los empleados en el archivo data.csv (modo texto).
      9. Guardar los datos de los empleados en el archivo data.csv (modo binario).
-    10. Salir
+    99. Salir
 *****************************************************/
 
 
@@ -25,13 +26,15 @@ int main()
     int option = 0;
 
     LinkedList* listaEmpleados = ll_newLinkedList();
+    LinkedList* listaEmpleadosFiltrados = ll_newLinkedList();
 
     do{
         printf("\n****************************************************\nMenu:\n1. Cargar los datos de los empleados desde el archivo data.csv (modo texto).\n");
         printf("2. Cargar los datos de los empleados desde el archivo data.csv (modo binario)\n ");
         printf("3. Alta de empleado\n4. Modificar datos de empleado\n5. Baja de empleado\n6. Listar empleados\n");
         printf("7. Ordenar empleados\n8. Guardar los datos de los empleados en el archivo data.csv (modo texto).\n");
-        printf("9. Guardar los datos de los empleados en el archivo data.csv (modo binario).\n10. Salir\n");
+        printf("9. Guardar los datos de los empleados en el archivo data.csv (modo binario).\n");
+        printf("10.Nueva lista Filtrada por sueldos menores a 10000\n11.Imprimir lista empleados\n99. Salir\n ");
         printf(" *****************************************************\n");
         utn_getInt(&option,5,"\nIngrese numero de opcion ","\nValor ingresado invalido \n");
 
@@ -88,9 +91,22 @@ int main()
                     printf("\nArchivo binario salvado con exito\n ");
                 }
                 break;
+            case 10:
+                if (controller_filter(listaEmpleados, listaEmpleadosFiltrados)==0)
+                {
+                    printf("Empleados filtrados correctamente");
+                    controller_showList(listaEmpleadosFiltrados);
+                }
+                break;
+            case 11:
+                if (controller_showList(listaEmpleados)==0)
+                {
+                    printf("***Fin de la lista***");
+                }
+                break;
 
         }
-    }while(option != 10);
+    }while(option != 99);
 
     return 0;
 }

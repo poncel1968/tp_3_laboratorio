@@ -100,3 +100,63 @@
 	<string.h>
 	"utn.h"
 
+1542320841 source:/home/alumno/Descargas/tp_3_laboratorio/tp3_INIT/Controller.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Employee.h"
+	"parser.h"
+	"utn.h"
+	"ll.h"
+
+1542320886 /home/alumno/Descargas/tp_3_laboratorio/tp3_INIT/LinkedList.h
+
+1542320987 /home/alumno/Descargas/tp_3_laboratorio/tp3_INIT/Employee.h
+
+1542317571 /home/alumno/Descargas/tp_3_laboratorio/tp3_INIT/parser.h
+
+1542317571 /home/alumno/Descargas/tp_3_laboratorio/tp3_INIT/utn.h
+
+1542321608 source:/home/alumno/Descargas/tp_3_laboratorio/tp3_INIT/Employee.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Employee.h"
+	"ll.h"
+
+1542321466 source:/home/alumno/Descargas/tp_3_laboratorio/tp3_INIT/main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+	"utn.h"
+	"ll.h"
+
+1542321206 /home/alumno/Descargas/tp_3_laboratorio/tp3_INIT/Controller.h
+
+1542317571 source:/home/alumno/Descargas/tp_3_laboratorio/tp3_INIT/parser.c
+	<stdio_ext.h>
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+	"LinkedList.h"
+	"Employee.h"
+
+1542317571 source:/home/alumno/Descargas/tp_3_laboratorio/tp3_INIT/utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"utn.h"
+
+1542321572 source:/home/alumno/Descargas/tp_3_laboratorio/tp3_INIT/ll.c
+	"Employee.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ll.h"
+	"LinkedList.h"
+
+1542318527 /home/alumno/Descargas/tp_3_laboratorio/tp3_INIT/ll.h
+

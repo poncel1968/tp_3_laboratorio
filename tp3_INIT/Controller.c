@@ -5,6 +5,7 @@
 #include "Employee.h"
 #include "parser.h"
 #include "utn.h"
+#include "ll.h"
 
 
 
@@ -340,3 +341,26 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee)
     return retorno;
 }
 
+int controller_filter(LinkedList* this, LinkedList* filteredList)
+{
+    int retorno=-1;
+
+    if (this != NULL && filteredList !=NULL)
+    {
+        filteredList= ll_filter(this, Employee_criterioFiltro);
+        retorno=0;
+    }
+
+        return retorno;
+}
+
+int controller_showList(LinkedList* this)
+{
+    int retorno=-1;
+    if (this != NULL)
+    {
+        ll_map(this,Employee_show);
+        retorno=0;
+    }
+    return retorno;
+}

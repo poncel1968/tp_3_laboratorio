@@ -27,5 +27,7 @@ int Employee_getSueldo(Employee* this,int* sueldo);
 int getNextId(int idAnterior, int* pId);
 Employee* Employee_newConParametrosConsole(int* pId, char* nombre,char* horasTrabajadasStr,char* sueldoStr);
 int Employee_criterio(void* this, void* other);
+int Employee_criterioFiltro(void* this);
+int Employee_show(void* this);
 
 #endif // employee_H_INCLUDED
